@@ -37,7 +37,8 @@
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <!-- 是否使用查询缓存 -->
                 <prop key="hibernate.cache.use_query_cache">false</prop>
-                <prop key="current_session_context_class">thread</prop>
+                <!--
+                <prop key="current_session_context_class">jta</prop>-->
                 <!-- 使用Spring的事物控制 -->
                 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
             </props>
@@ -67,6 +68,6 @@
     <aop:aspectj-autoproxy />
 
     <aop:config>
-        <aop:advisor advice-ref="txAdvise" pointcut="execution(public * com.lyh.service.*Service.*(..))" />
+        <aop:advisor advice-ref="txAdvise" pointcut="execution(public * com.lyh.service.impl.*ServiceImpl.*(..))" />
     </aop:config>
 </beans>

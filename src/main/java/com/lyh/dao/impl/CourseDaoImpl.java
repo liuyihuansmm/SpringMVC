@@ -13,10 +13,7 @@ import javax.annotation.Resource;
  * Created by LYH on 2016-12-20.
  */
 @Repository("courseDao")
-public class CourseDaoImpl extends HibernateDaoSupport implements CourseDao {
-
-    @Autowired
-    private SessionFactory sessionFactory;
+public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
     public void save(Course course) {

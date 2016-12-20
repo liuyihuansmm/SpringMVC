@@ -11,20 +11,18 @@ import java.util.List;
 @Entity
 @Table(name="course")
 public class Course {
+
+    private Integer courseId;
+
+    private String courseName;
+
+    private String courseDesc;
+
+    //private List<Chapter> chapterList;
     @Id
     @Column(name="id",nullable = false,unique = true,length = 32)
     @GenericGenerator(name = "courseTableGenerator" , strategy = "native")
     @GeneratedValue(generator= "courseTableGenerator")
-    private Integer courseId;
-
-    @Column(name = "name",nullable = false,length = 32)
-    private String courseName;
-
-    @Column(name = "desc",nullable = false,length = 32)
-    private String courseDesc;
-
-    private List<Chapter> chapterList;
-
     public Integer getCourseId() {
         return courseId;
     }
@@ -33,6 +31,7 @@ public class Course {
         this.courseId = courseId;
     }
 
+    @Column(name = "name",nullable = false,length = 32)
     public String getCourseName() {
         return courseName;
     }
@@ -41,6 +40,7 @@ public class Course {
         this.courseName = courseName;
     }
 
+    @Column(name = "desc",nullable = false,length = 32)
     public String getCourseDesc() {
         return courseDesc;
     }
@@ -48,7 +48,7 @@ public class Course {
     public void setCourseDesc(String courseDesc) {
         this.courseDesc = courseDesc;
     }
-
+    /*
     public List<Chapter> getChapterList() {
         return chapterList;
     }
@@ -56,4 +56,5 @@ public class Course {
     public void setChapterList(List<Chapter> chapterList) {
         this.chapterList = chapterList;
     }
+    */
 }

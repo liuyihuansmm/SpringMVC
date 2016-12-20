@@ -5,11 +5,13 @@ import com.lyh.model.Course;
 import com.lyh.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by LYH on 2016-12-20.
  */
 @Service("courseService")
+@Transactional
 public class CourseServiceImpl implements CourseService {
 
     @Autowired private CourseDao courseDao;
@@ -23,6 +25,6 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public void save(Course course) {
-
+        courseDao.save(course);
     }
 }
