@@ -1,16 +1,26 @@
 package com.lyh.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by LYH on 2016-12-20.
  */
+@Entity
+@Table(name="course")
 public class Course {
-
+    @Id
+    @Column(name="id",nullable = false,unique = true,length = 32)
+    @GenericGenerator(name = "courseTableGenerator" , strategy = "native")
+    @GeneratedValue(generator= "courseTableGenerator")
     private Integer courseId;
 
+    @Column(name = "name",nullable = false,length = 32)
     private String courseName;
 
+    @Column(name = "desc",nullable = false,length = 32)
     private String courseDesc;
 
     private List<Chapter> chapterList;
