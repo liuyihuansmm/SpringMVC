@@ -9,7 +9,7 @@ import java.util.List;
  * Created by LYH on 2016-12-20.
  */
 @Entity
-@Table(name="course")
+@Table(name="t_course")
 public class Course {
 
     private Integer courseId;
@@ -20,7 +20,7 @@ public class Course {
 
     //private List<Chapter> chapterList;
     @Id
-    @Column(name="id",nullable = false,unique = true,length = 32)
+    @Column(name="courseid",nullable = false,unique = true,length = 32)
     @GenericGenerator(name = "courseTableGenerator" , strategy = "assigned")
     @GeneratedValue(generator= "courseTableGenerator")
     public Integer getCourseId() {
@@ -31,7 +31,7 @@ public class Course {
         this.courseId = courseId;
     }
 
-    @Column(name = "name",nullable = false,length = 32)
+    @Column(name = "coursename",nullable = false,length = 32)
     public String getCourseName() {
         return courseName;
     }
@@ -40,7 +40,7 @@ public class Course {
         this.courseName = courseName;
     }
 
-    @Column(name = "desc",nullable = false,length = 32)
+    @Column(name = "coursedesc",nullable = false,length = 32)
     public String getCourseDesc() {
         return courseDesc;
     }

@@ -13,6 +13,6 @@ public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
     public void saveCourse(Course course) {
-        this.getHibernateTemplate().delete(course);
+        this.getHibernateTemplate().save(course);
     }
 }
