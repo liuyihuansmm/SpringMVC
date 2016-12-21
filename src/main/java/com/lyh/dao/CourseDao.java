@@ -7,6 +7,6 @@ import com.lyh.model.Course;
  */
 public interface CourseDao {
 
-    public void save(Course course);
+    public void saveCourse(Course course);
 
 }

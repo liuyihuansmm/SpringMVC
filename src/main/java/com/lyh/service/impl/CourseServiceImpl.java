@@ -24,7 +24,7 @@ public class CourseServiceImpl implements CourseService {
     }
      */
     @Override
-    public void save(Course course) {
-        courseDao.save(course);
+    public void saveCourse(Course course) {
+        courseDao.saveCourse(course);
     }
 }

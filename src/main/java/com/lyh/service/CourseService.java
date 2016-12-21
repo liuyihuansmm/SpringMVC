@@ -7,7 +7,7 @@ import com.lyh.model.Course;
  */
 public interface CourseService {
 
-    public void save(Course course);
+    public void saveCourse(Course course);
 
 
 }

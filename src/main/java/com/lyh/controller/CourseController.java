@@ -35,10 +35,10 @@ public class CourseController {
     public String doSave(){
         Course course = new Course();
         course.setCourseId(1);
-        course.setCourseName("JAVA大法好啊");
-        course.setCourseDesc("一群了垃圾");
-        courseService.save(course);
+        course.setCourseName("JAVA");
+        course.setCourseDesc("Perfect Java");
+        courseService.saveCourse(course);
         System.out.println("保存成功");
-        return "course_list";
+        return "redirect:/course/list";
     }
 }

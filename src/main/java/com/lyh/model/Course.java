@@ -21,7 +21,7 @@ public class Course {
     //private List<Chapter> chapterList;
     @Id
     @Column(name="id",nullable = false,unique = true,length = 32)
-    @GenericGenerator(name = "courseTableGenerator" , strategy = "native")
+    @GenericGenerator(name = "courseTableGenerator" , strategy = "assigned")
     @GeneratedValue(generator= "courseTableGenerator")
     public Integer getCourseId() {
         return courseId;

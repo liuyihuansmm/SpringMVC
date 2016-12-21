@@ -19,10 +19,10 @@
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="${jdbc.Class}" />
-        <property name="jdbcUrl" value="${jdbc.Url}" />
-        <property name="user" value="${jdbc.username}" />
-        <property name="password" value="${jdbc.password}" />
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/lyh?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false" />
+        <property name="user" value="root" />
+        <property name="password" value="" />
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -37,8 +37,8 @@
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <!-- 是否使用查询缓存 -->
                 <prop key="hibernate.cache.use_query_cache">false</prop>
-                <!--
-                <prop key="current_session_context_class">jta</prop>-->
+
+                <prop key="current_session_context_class">thread</prop>
                 <!-- 使用Spring的事物控制 -->
                 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
             </props>
@@ -56,10 +56,12 @@
     </bean>
     <!-- 事务通知。事务生效策率:在哪些方法调用时，开启事务，事务是否只读,事务的传播行为等. -->
     <tx:advice id="txAdvise" transaction-manager="transactionManager">
+
         <tx:attributes>
-            <tx:method name="get*" read-only="true" propagation="REQUIRED"/>
+            <tx:method name="get*"  read-only="true" propagation="REQUIRED"/>
             <tx:method name="list*" read-only="true" propagation="REQUIRED"/>
             <tx:method name="find*" read-only="true" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
             <tx:method name="*"  propagation="REQUIRED" rollback-for="Exception"/>
         </tx:attributes>
     </tx:advice>
@@ -68,6 +70,7 @@
     <aop:aspectj-autoproxy />
 
     <aop:config>
-        <aop:advisor advice-ref="txAdvise" pointcut="execution(public * com.lyh.service.impl.*ServiceImpl.*(..))" />
+        <aop:advisor advice-ref="txAdvise" pointcut="execution(* com.lyh.service..*ServiceImpl.*(..))" />
     </aop:config>
+
 </beans>

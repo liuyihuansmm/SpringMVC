@@ -2,12 +2,8 @@ package com.lyh.dao.impl;
 
 import com.lyh.dao.CourseDao;
 import com.lyh.model.Course;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resource;
 
 /**
  * Created by LYH on 2016-12-20.
@@ -16,7 +12,7 @@ import javax.annotation.Resource;
 public class CourseDaoImpl extends BaseDao implements CourseDao {
 
     @Override
-    public void save(Course course) {
-        this.getHibernateTemplate().save(course);
+    public void saveCourse(Course course) {
+        this.getHibernateTemplate().delete(course);
     }
 }
